@@ -5,6 +5,8 @@
 
 #define NUMBER_CLIENTS 4
 #define MSG_BUF 120
+#define N_MSG 6
+#define MAX_SLP 2
 
 char *readline(int fd);
 
@@ -30,9 +32,13 @@ int main(int argc, char *argv[])
       case -1:
 	perror("Error creating child");
 	return EXIT_FAILURE;
-      case 0:
-	sprintf(msg, "%d", pfd[1]);
-	execl("lab3-client", "lab3-client", msg, (char *)0);
+      case 0: ;
+	char fd[3], slp[3], nmsg[3];
+	sprintf(fd, "%d", pfd[1]);
+	sprintf(slp, "%d", MAX_SLP);
+	sprintf(nmsg, "%d", N_MSG);
+       
+	execl("client", "client", fd, nmsg, slp, (char *)NULL);
 	exit(EXIT_FAILURE);
       }
     if (pid == 0) break;

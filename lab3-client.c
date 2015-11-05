@@ -8,10 +8,12 @@
 
 int main(int argc, char *argv[])
 {
-  int fd;
+  int fd, nmsg, slp;
   char msg[MSG_BUF + 1];
 
   sscanf(argv[1], "%d", &fd);
+  sscanf(argv[2], "%d", &nmsg);
+  sscanf(argv[3], "%d", &slp);
   
   return EXIT_SUCCESS;
 }
