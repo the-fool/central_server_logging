@@ -31,8 +31,9 @@ int main(int argc, char *argv[])
 	perror("Error creating child");
 	return EXIT_FAILURE;
       case 0:
-	printf("Child %d\n", getpid());
-	break;
+	sprintf(msg, "%d", pfd[1]);
+	execl("lab3-client", "lab3-client", msg, (char *)0);
+	exit(EXIT_FAILURE);
       }
     if (pid == 0) break;
   }
